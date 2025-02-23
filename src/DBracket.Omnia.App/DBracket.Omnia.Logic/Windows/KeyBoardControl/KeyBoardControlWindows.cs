@@ -1,8 +1,8 @@
 ﻿using DBracket.Omnia.Api.Interaces;
 
-namespace DBracket.Omnia.Api.KeyBoardControl
+namespace DBracket.Omnia.Logic.Windows.KeyBoardControl
 {
-    internal class KeyBoardControlWindows : IKeyBoardControl
+    public class KeyBoardControlWindows : IKeyBoardControl
     {
         #region "----------------------------- Private Fields ------------------------------"
 

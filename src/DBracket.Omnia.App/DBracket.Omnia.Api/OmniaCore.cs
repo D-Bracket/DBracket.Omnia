@@ -1,5 +1,4 @@
 ﻿using DBracket.Omnia.Api.Interaces;
-using DBracket.Omnia.Api.KeyBoardControl;
 
 namespace DBracket.Omnia.Api
 {
@@ -14,11 +13,7 @@ namespace DBracket.Omnia.Api
         #region "------------------------------ Constructor --------------------------------"
         private OmniaCore()
         {
-#if LINUX
-            KeyBoardControl = new KeyBoardControlWindows();
-#else
-            KeyBoardControl = new KeyBoardControlWindows();
-#endif
+
         }
         #endregion
 

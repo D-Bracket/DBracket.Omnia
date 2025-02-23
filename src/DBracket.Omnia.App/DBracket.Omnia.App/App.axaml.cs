@@ -6,6 +6,9 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using DBracket.Omnia.App.ViewModels;
 using DBracket.Omnia.App.Views;
+using DBracket.Omnia.Api;
+using DBracket.Omnia.Logic.Windows.KeyBoardControl;
+using System;
 
 namespace DBracket.Omnia.App;
 
@@ -14,6 +17,21 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
+        var omniaCore = OmniaCore.GetInstance();
+        if (OperatingSystem.IsWindows())
+        {
+            omniaCore.GetType().GetProperty("KeyBoardControl")?.SetValue(omniaCore, new KeyBoardControlWindows());
+        }
+        else if (OperatingSystem.IsLinux())
+        {
+
+        }
+
+        if (omniaCore.KeyBoardControl is null)
+        {
+            // TODO REPORT ERROR
+        }
     }
 
     public override void OnFrameworkInitializationCompleted()

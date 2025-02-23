@@ -24,5 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DBracket.Omnia.Api\DBracket.Omnia.Api.csproj" />
+    <ProjectReference Include="..\DBracket.Omnia.Logic\DBracket.Omnia.Logic.csproj" />
   </ItemGroup>
 </Project>

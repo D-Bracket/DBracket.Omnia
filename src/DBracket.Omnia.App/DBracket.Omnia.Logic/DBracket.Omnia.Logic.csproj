@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Linux\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DBracket.Omnia.Api\DBracket.Omnia.Api.csproj" />
+  </ItemGroup>
+
 </Project>
