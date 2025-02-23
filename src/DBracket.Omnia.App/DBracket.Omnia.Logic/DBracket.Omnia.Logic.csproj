@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DBracket.Omnia.Logic\DBracket.Omnia.Logic.csproj" />
-  </ItemGroup>
-
 </Project>
