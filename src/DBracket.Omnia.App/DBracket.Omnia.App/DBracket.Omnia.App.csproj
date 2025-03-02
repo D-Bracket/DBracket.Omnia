@@ -23,7 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DBracket.Common.UI.AvaloniaUI\DBracket.Common.UI.AvaloniaUI.csproj" />
     <ProjectReference Include="..\DBracket.Omnia.Api\DBracket.Omnia.Api.csproj" />
     <ProjectReference Include="..\DBracket.Omnia.Logic\DBracket.Omnia.Logic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UserControls\Plugins\KeyboardOptimizer\Components\" />
   </ItemGroup>
 </Project>

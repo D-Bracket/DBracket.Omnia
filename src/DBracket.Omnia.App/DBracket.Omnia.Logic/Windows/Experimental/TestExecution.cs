@@ -43,7 +43,7 @@ namespace DBracket.Omnia.Logic.Windows.Experimental
 
         public void Test()
         {
-            KeyboardInterceptor.Start();
+            //KeyboardInterceptor.Start();
 
             Debug.WriteLine("Press ESC to stop the hook.");
 

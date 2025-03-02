@@ -1,19 +1,26 @@
-﻿using DBracket.Omnia.Api.Interfaces;
+﻿using System.Windows.Input;
 
-namespace DBracket.Omnia.Api
+namespace DBracket.Common.UI.AvaloniaUI.Commands
 {
-    public sealed class OmniaCore
+    public class GenericCommand<T> : ICommand
     {
         #region "----------------------------- Private Fields ------------------------------"
-        private static OmniaCore _instance = new OmniaCore();
+        private readonly Action<T?> _excute;
+        private readonly Predicate<object?>? _predicate;
         #endregion
 
 
 
         #region "------------------------------ Constructor --------------------------------"
-        private OmniaCore()
+        public GenericCommand(Action<T?> execute) : this(execute, null)
         {
 
+        }
+
+        public GenericCommand(Action<T?> execute, Predicate<object?>? canExecute)
+        {
+            _excute = execute;
+            _predicate = canExecute;
         }
         #endregion
 
@@ -21,9 +28,17 @@ namespace DBracket.Omnia.Api
 
         #region "--------------------------------- Methods ---------------------------------"
         #region "----------------------------- Public Methods ------------------------------"
-        public static OmniaCore GetInstance()
+        public bool CanExecute(object? parameter)
         {
-            return _instance;
+            return _predicate == null || _predicate(parameter);
+        }
+
+        public void Execute(object? parameter)
+        {
+            if (parameter is not T genericParameter)
+                throw new Exception("Invalid CommandParameter");
+
+            _excute(genericParameter);
         }
         #endregion
 
@@ -40,11 +55,11 @@ namespace DBracket.Omnia.Api
 
         #region "--------------------------- Public Propterties ----------------------------"
         #region "------------------------------- Properties --------------------------------"
-        public IKeyBoardControl KeyBoardControl { get; private set; }
+
         #endregion
 
         #region "--------------------------------- Events ----------------------------------"
-
+        public event EventHandler? CanExecuteChanged;
         #endregion
         #endregion
     }

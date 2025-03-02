@@ -1,19 +1,21 @@
-﻿using DBracket.Omnia.Api.Interfaces;
-
-namespace DBracket.Omnia.Api
+﻿namespace DBracket.Omnia.App.UserControls.Plugins.KeyboardOptimizer
 {
-    public sealed class OmniaCore
+    public class KeymizerCore
     {
         #region "----------------------------- Private Fields ------------------------------"
-        private static OmniaCore _instance = new OmniaCore();
+        private KeyboardOptimizerWindow? _window;
+        private KeyboardOptimizerView _view;
         #endregion
 
 
 
         #region "------------------------------ Constructor --------------------------------"
-        private OmniaCore()
+        public KeymizerCore()
         {
-
+            _view = new KeyboardOptimizerView()
+            {
+                DataContext = new KeyboardOptimizerViewModel()
+            };
         }
         #endregion
 
@@ -21,9 +23,16 @@ namespace DBracket.Omnia.Api
 
         #region "--------------------------------- Methods ---------------------------------"
         #region "----------------------------- Public Methods ------------------------------"
-        public static OmniaCore GetInstance()
+        public void Open()
         {
-            return _instance;
+            if (_window == null || _window.IsClosed)
+            {
+                _window = new KeyboardOptimizerWindow(_view);
+                _window.Show();
+                return;
+            }
+
+            _window.Activate();
         }
         #endregion
 
@@ -40,7 +49,7 @@ namespace DBracket.Omnia.Api
 
         #region "--------------------------- Public Propterties ----------------------------"
         #region "------------------------------- Properties --------------------------------"
-        public IKeyBoardControl KeyBoardControl { get; private set; }
+
         #endregion
 
         #region "--------------------------------- Events ----------------------------------"

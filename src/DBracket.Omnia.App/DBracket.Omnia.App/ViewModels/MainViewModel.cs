@@ -1,5 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DBracket.Common.UI.AvaloniaUI.Commands;
 using DBracket.Omnia.Api;
+using DBracket.Omnia.App.UserControls.Plugins.KeyboardOptimizer;
+using System;
+using System.Windows.Input;
 
 namespace DBracket.Omnia.App.ViewModels;
 
@@ -7,6 +11,7 @@ public partial class MainViewModel : ViewModelBase
 {
     #region "----------------------------- Private Fields ------------------------------"
     private OmniaCore _omniaCore;
+    private KeymizerCore _keymizerCore;
     #endregion
 
 
@@ -15,6 +20,8 @@ public partial class MainViewModel : ViewModelBase
     public MainViewModel()
     {
         _omniaCore = OmniaCore.GetInstance();
+        _keymizerCore = new();
+        BuyMusicCommand  = new GenericCommand<string>(HandleTest);
     }
     #endregion
 
@@ -34,7 +41,18 @@ public partial class MainViewModel : ViewModelBase
     #endregion
 
     #region "----------------------------- Command Handling ----------------------------"
+    private void HandleTest(string? command)
+    {
+        switch (command)
+        {
+            case "OpenKeymizer":
+                _keymizerCore.Open();
+                break;
 
+            default:
+                break;
+        }
+    }
     #endregion
     #endregion
 
@@ -47,11 +65,11 @@ public partial class MainViewModel : ViewModelBase
     #endregion
 
     #region "--------------------------------- Events ----------------------------------"
-
     #endregion
 
     #region "-------------------------------- Commands ---------------------------------"
-
+    //public ReactiveCommand<Unit, Unit> DoTheThing { get; }+
+    public ICommand BuyMusicCommand { get; } 
     #endregion
     #endregion
 }
