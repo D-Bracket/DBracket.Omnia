@@ -21,7 +21,7 @@ public partial class App : Application
         var omniaCore = OmniaCore.GetInstance();
         if (OperatingSystem.IsWindows())
         {
-            omniaCore.GetType().GetProperty("KeyBoardControl")?.SetValue(omniaCore, new KeyBoardControlWindows());
+            //omniaCore.GetType().GetProperty("KeyBoardControl")?.SetValue(omniaCore, new KeyBoardControlWindows());
         }
         else if (OperatingSystem.IsLinux())
         {

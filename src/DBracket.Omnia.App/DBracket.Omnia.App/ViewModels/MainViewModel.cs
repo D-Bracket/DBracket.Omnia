@@ -2,7 +2,6 @@
 using DBracket.Common.UI.AvaloniaUI.Commands;
 using DBracket.Omnia.Api;
 using DBracket.Omnia.App.UserControls.Plugins.KeyboardOptimizer;
-using System;
 using System.Windows.Input;
 
 namespace DBracket.Omnia.App.ViewModels;
@@ -21,7 +20,7 @@ public partial class MainViewModel : ViewModelBase
     {
         _omniaCore = OmniaCore.GetInstance();
         _keymizerCore = new();
-        BuyMusicCommand  = new GenericCommand<string>(HandleTest);
+        Commands = new GenericCommand<string>(HandleTest);
     }
     #endregion
 
@@ -69,7 +68,7 @@ public partial class MainViewModel : ViewModelBase
 
     #region "-------------------------------- Commands ---------------------------------"
     //public ReactiveCommand<Unit, Unit> DoTheThing { get; }+
-    public ICommand BuyMusicCommand { get; } 
+    public ICommand Commands { get; } 
     #endregion
     #endregion
 }

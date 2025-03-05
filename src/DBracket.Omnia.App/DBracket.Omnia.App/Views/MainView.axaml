@@ -14,8 +14,8 @@
 
 	<Grid>
 		<StackPanel Orientation="Horizontal">
-			<Button Command="{Binding BuyMusicCommand}"
-					CommandParameter="Test"
+			<Button Command="{Binding Commands}"
+					CommandParameter="OpenKeymizer"
 					Content="Configure"/>
 		</StackPanel>
 	</Grid>

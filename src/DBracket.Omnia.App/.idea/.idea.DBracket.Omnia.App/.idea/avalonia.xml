@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="DBracket.Omnia.App/UserControls/Plugins/KeyboardOptimizer/KeyboardOptimizerView.axaml" value="DBracket.Omnia.App.Desktop/DBracket.Omnia.App.Desktop.csproj" />
+        <entry key="DBracket.Omnia.App/Views/MainView.axaml" value="DBracket.Omnia.App.Desktop/DBracket.Omnia.App.Desktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

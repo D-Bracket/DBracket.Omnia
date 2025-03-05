@@ -1,0 +1,862 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DBracket.Common.UI.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:DBracket.Common.UI.WPF.Bases.DialogViewModelBase">
+            <summary>Baseclass for Dialog ViewModels</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.RaiseDialogSuccessEvent(System.Object)">
+            <summary>Triggeres the event, that the dialog input is done and that the dialog should be closed</summary>
+            <param name="createdObject">Optional object, that was created in the dialog</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.ShowError(System.String,System.String)">
+            <summary>Shows an error under the dialog</summary>
+            <param name="title">Title of the error</param>
+            <param name="description">Description of the error</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.ResetError">
+            <summary>Resets the displayed error</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.ErrorTitle">
+            <summary>Current error title</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.ErrorText">
+            <summary>Current error description</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.ShowErrorMessage">
+            <summary>Determines, wheter the error popup is shown</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.NavigationButtons">
+            <summary>Buttons to navigate the dialog</summary>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.DialogSuccessReport">
+            <summary>Is triggered, when a user input has been received and the dialog needs to be closed</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Bases.DialogViewModelBase.DialogSuccessReportHandler">
+            <summary>Handles the dialog input and closes the dialog</summary>
+            <param name="createdObject">Optional object, that was created in the dialog</param>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Bases.PropertyChangedBase">
+            <summary>Baseclass to notify the UI about changes in the ViewModel data</summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Bases.PropertyChangedBase._propertyErrors">
+            <summary>Contains the validation errors of all properties</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.OnPropertyChanging(System.String)">
+            <summary>Informs the UI that the data of a property is about to be changed, by triggering the event "PropertyChanging"</summary>
+            <param name="propertyName">Name of the properties, whose data is about to be changed</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.OnMySelfChanging(System.String)">
+            <summary>Informs the UI that the data of a property is about to be changed, by triggering the event "PropertyChanging"</summary>
+            <param name="callerMemberName">Name of the properties, whose data is about to be changed</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.OnPropertyChanged(System.String)">
+            <summary>Informs the UI that the data of a property was changed, by triggering the event "PropertyChanged"</summary>
+            <param name="propertyName">Name of the properties, whose data was changed</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.OnMySelfChanged(System.String)">
+            <summary>Informs the UI that the data of a property was changed, by triggering the event "PropertyChanged"</summary>
+            <param name="callerMemberName">Name of the properties, whose data was changed</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.GetErrors(System.String)">
+            <summary>Gets all error descriptions of a property</summary>
+            <param name="propertyName">Name of the property</param>
+            <returns>List of all the error descriptions</returns>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.AddError(System.String,System.String)">
+            <summary>Adds a validation error description to a property</summary>
+            <param name="propertyName">Name of the property, whose input validation failed</param>
+            <param name="errorDescription">Description of the error</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.ResetErrors(System.String)">
+            <summary>Resets all Errors of a property</summary>
+            <param name="propertyName">Name of the property, whose errors should be reset</param>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.HasErrors">
+            <summary>Shows, if there are any properties whose input validation failed</summary>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.PropertyChanging">
+            <summary>Is triggered, before the data of a property is changed in the viewmodel</summary>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.PropertyChanged">
+            <summary>Is triggered, when a property in the viewmodel was changed</summary>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Bases.PropertyChangedBase.ErrorsChanged">
+            <summary>Is triggered, when the validation of a property input failed</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Bases.ViewModelBase">
+            <summary>Baseclass for ViewModels</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Bases.ViewModelBase.ExecuteCommands(System.String)">
+            <summary>Executes the commands from the UI</summary>
+            <param name="command">Command that has to be executed</param>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Bases.ViewModelBase.Commands">
+            <summary>Commands from the UI</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Commands.RelayCommand">
+            <summary>Relaycommand to execute Actions</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.RelayCommand.#ctor(System.Action{System.Object})">
+            <summary>Relaycommand to execute Actions</summary>
+            <param name="execute">Action to execute, when the command is called</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+            <summary>Relaycommand to execute Actions</summary>
+            <param name="execute">Action to execute, when the command is called</param>
+            <param name="canExecute">Determines wheter the command can be executed or not</param>
+            <exception cref="T:System.ArgumentNullException">Thrown, when the execute action is null</exception>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.RelayCommand.CanExecute(System.Object)">
+            <summary>Returns wheter the command can be executed or not</summary>
+            <param name="parameter">Commandparameter</param>
+            <returns>True - If the command can be executed</returns>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.RelayCommand.Execute(System.Object)">
+            <summary>Executes the Command</summary>
+            <param name="parameter">Commandparameter</param>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Commands.RelayCommand.CanExecuteChanged">
+            <summary>Eventhandler, for when the Condtions to execute the Command changed</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.StringCommand.#ctor(System.Action{System.String})">
+            <summary>Relaycommand to execute Actions</summary>
+            <param name="execute">Action to execute, when the command is called</param>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.StringCommand.#ctor(System.Action{System.String},System.Predicate{System.Object})">
+            <summary>Relaycommand to execute Actions</summary>
+            <param name="execute">Action to execute, when the command is called</param>
+            <param name="canExecute">Determines wheter the command can be executed or not</param>
+            <exception cref="T:System.ArgumentNullException">Thrown, when the execute action is null</exception>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.StringCommand.CanExecute(System.Object)">
+            <summary>Returns wheter the command can be executed or not</summary>
+            <param name="parameter">Commandparameter</param>
+            <returns>True - If the command can be executed</returns>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Commands.StringCommand.Execute(System.Object)">
+            <summary>Executes the Command</summary>
+            <param name="parameter">Commandparameter</param>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Commands.StringCommand.CanExecuteChanged">
+            <summary>Eventhandler, for when the Condtions to execute the Command changed</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Controls.Button.HandleStateChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary></summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Controls.FlyoutBaseView">
+            <summary></summary>
+            <summary>
+            FlyoutBaseView
+            </summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Controls.FlyoutBaseView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Controls.Icon">
+            <summary>
+            Icon - Data for paths, is from MahApps Metro IconPacks
+            https://github.com/MahApps/IconPacks.Browser
+            </summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Controls.Icon.Data">
+            <summary>Data of the icon path</summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Controls.Icon.DataProperty">
+            <summary>Data DependencyProperty</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Controls.Icon.IconType">
+            <summary>Type of the icon</summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Controls.Icon.IconTypeProperty">
+            <summary>IconType DependencyProperty</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Controls.Icon.Flip">
+            <summary>
+            -1  - Doesn't Flip the icon upside down
+            0   - Flips the icon upside down
+            </summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Controls.Icon.FlipProperty">
+            <summary>IconType DependencyProperty</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Controls.IconTypes">
+            <summary>Available Icontypes</summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Controls.IconTypes.NoIcon">
+            <summary>No icon selected</summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Controls.IconTypes.Accept_PicolIcons">
+            <summary>PicolIcons.Accept</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Controls.SideMenu.SelectionChangedHandler">
+            <summary>
+                An event fired when the selection changes.
+            </summary>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Controls.SideMenu.SelectionChanged">
+            <summary>
+                An event fired when the selection changes.
+            </summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.Control.DialogController">
+            <summary>Controller to display dialogs (is bound to a specific host)</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.Control.DialogController.#ctor">
+            <summary>Controller to display dialogs (is bound to a specific host)</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogController.IsOpened">
+            <summary>True, when a dialog is displayed</summary>
+        </member>
+        <member name="E:DBracket.Common.UI.WPF.Dialogs.Control.DialogController.OpenDialogRequest">
+            <summary>Thrown, when a dialog should be opened</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.Control.DialogHost">
+            <summary>
+            DialogHost
+            </summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.Control.DialogHost.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton">
+            <summary>Button for the navigation in a dialog</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.#ctor">
+            <summary>Button for the navigation in a dialog</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.Content">
+            <summary>Content of the Button</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.CommandParameter">
+            <summary>Parameter that is send, when the bound Command should be executed</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.SpaceToLeft">
+            <summary>Space to the left of the button</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.Margin">
+            <summary>Margin to other objects</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.Width">
+            <summary>Button Width</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogNavigationButton.IsEnabled">
+            <summary>Determines wheter the button is only enabled under certain conditions</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.Control.DialogPresenter">
+            <summary>
+            DialogPresenter
+            </summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.Control.DialogPresenter.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.Control.DialogSettings">
+            <summary>Settings, to customize how a dialog should be displayed</summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.Control.DialogSettings.#ctor">
+            <summary>Settings, to customize how a dialog should be displayed</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Dialogs.Control.DialogSettings.StrechHorizontally">
+            <summary>When set, the dialog is stretched, horizontally accross the screen</summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.CreateObjectDialog.CreateObjectDialogView">
+            <summary>
+            Interaktionslogik für CreateObjectDialogView.xaml
+            </summary>
+            <summary>
+            CreateObjectDialogView
+            </summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.CreateObjectDialog.CreateObjectDialogView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.InputDialog.InputDialogView">
+            <summary>
+            Interaktionslogik für InputDialogView.xaml
+            </summary>
+            <summary>
+            InputDialogView
+            </summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.InputDialog.InputDialogView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Dialogs.YesNoDialog.YesNoDialogView">
+            <summary>
+            Interaktionslogik für YesNoDialogView.xaml
+            </summary>
+            <summary>
+            YesNoDialogView
+            </summary>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Dialogs.YesNoDialog.YesNoDialogView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Themes.ThemeContainer.HeaderProperty">
+            <summary>DataPoint DependencyProperty</summary>
+        </member>
+        <member name="P:DBracket.Common.UI.WPF.Themes.ThemesTest.Themes">
+            <summary></summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.WM_NCLBUTTONDOWN">
+            <summary>Posted when the user presses the left mouse button while the cursor is within the nonclient area of a window. This message is posted to the window that contains the cursor. If a window has captured the mouse, this message is not posted.</summary>
+            <returns>If an application processes this message, it should return zero.</returns>
+            <remarks>
+            <para>The [**DefWindowProc**](/windows/desktop/api/winuser/nf-winuser-defwindowproca) function tests the specified point to find the location of the cursor and performs the appropriate action. If appropriate, **DefWindowProc** sends the [**WM\_SYSCOMMAND**](/windows/desktop/menurc/wm-syscommand) message to the window. You can also use the [**GET\_X\_LPARAM**](/windows/desktop/api/windowsx/nf-windowsx-get_x_lparam) and [**GET\_Y\_LPARAM**](/windows/desktop/api/windowsx/nf-windowsx-get_y_lparam) macros to extract the values of the x- and y- coordinates from *lParam*.</para>
+            <para></para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/inputdev/wm-nclbuttondown#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.IsWindow(DBracket.Common.UI.WPF.Utils.Win32.Foundation.HWND)">
+            <summary>Determines whether the specified window handle identifies an existing window.</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window to be tested.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-iswindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the window handle identifies an existing window, the return value is nonzero. If the window handle does not identify an existing window, the return value is zero.</para>
+            </returns>
+            <remarks>A thread should not use <b>IsWindow</b> for a window that it did not create because the window could be destroyed after this function was called. Further, because window handles are recycled the handle could even point to a different window.</remarks>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.ReleaseCapture">
+            <summary>Releases the mouse capture from a window in the current thread and restores normal mouse input processing.</summary>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>An application calls this function after calling the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setcapture">SetCapture</a> function.</remarks>
+        </member>
+        <member name="M:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.PostMessage(DBracket.Common.UI.WPF.Utils.Win32.Foundation.HWND,System.UInt32,DBracket.Common.UI.WPF.Utils.Win32.Foundation.WPARAM,DBracket.Common.UI.WPF.Utils.Win32.Foundation.LPARAM)">
+            <summary>Places (posts) a message in the message queue associated with the thread that created the specified window and returns without waiting for the thread to process the message. (Unicode)</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window whose window procedure is to receive the message. The following values have special meanings. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="Msg">
+            <para>Type: <b>UINT</b> The message to be posted. For lists of the system-provided messages, see <a href="https://docs.microsoft.com/windows/desktop/winmsg/about-messages-and-message-queues">System-Defined Messages</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="wParam">
+            <para>Type: <b>WPARAM</b> Additional message-specific information.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="lParam">
+            <para>Type: <b>LPARAM</b> Additional message-specific information.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>When a message is blocked by UIPI the last error, retrieved with <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>, is set to 5 (access denied). Messages in a message queue are retrieved by calls to the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-getmessage">GetMessage</a> or <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-peekmessagea">PeekMessage</a> function. Applications that need to communicate using <b>HWND_BROADCAST</b> should use the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-registerwindowmessagea">RegisterWindowMessage</a> function to obtain a unique message for inter-application communication. The system only does marshalling for system messages (those in the range 0 to (<a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-user">WM_USER</a>-1)). To send other messages (those &gt;= <b>WM_USER</b>) to another process, you must do custom marshalling. If you send a message in the range below <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-user">WM_USER</a> to the asynchronous message functions (<b>PostMessage</b>, <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-sendnotifymessagea">SendNotifyMessage</a>, and <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-sendmessagecallbacka">SendMessageCallback</a>), its message parameters cannot include pointers. Otherwise, the operation will fail. The functions will return before the receiving thread has had a chance to process the message and the sender will free the memory before it is used. Do not post the <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-quit">WM_QUIT</a> message using <b>PostMessage</b>; use the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-postquitmessage">PostQuitMessage</a> function. An accessibility application can use <b>PostMessage</b> to post <a href="https://docs.microsoft.com/windows/desktop/inputdev/wm-appcommand">WM_APPCOMMAND</a> messages  to the shell to launch applications. This  functionality is not guaranteed to work for other types of applications. There is a limit of 10,000 posted messages per message queue. This limit should be sufficiently large.  If your application exceeds the limit, it should be redesigned to avoid consuming so many system resources. To adjust this limit, modify the following registry key. <pre><b>HKEY_LOCAL_MACHINE</b> <b>SOFTWARE</b> <b>Microsoft</b> <b>Windows NT</b> <b>CurrentVersion</b> <b>Windows</b> <b>USERPostMessageLimit</b></pre> If the function fails, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> to get extended error information. <b>GetLastError</b> returns <b>ERROR_NOT_ENOUGH_QUOTA</b> when the limit is hit. The minimum acceptable value is 4000.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-postmessagew#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.HWND2.HWND_TOP">
+            <summary>Places the window at the top of the Z order.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.HWND2.HWND_BOTTOM">
+            <summary>Places the window at the bottom of the Z order. If the <i>hWnd</i> parameter identifies a topmost window, the window loses its topmost status and is placed at the bottom of all other windows.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.HWND2.HWND_TOPMOST">
+            <summary>Places the window above all non-topmost windows. The window maintains its topmost position even when it is deactivated.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.HWND2.HWND_NOTOPMOST">
+            <summary>Places the window above all non-topmost windows (that is, behind all topmost windows). This flag has no effect if the window is already a non-topmost window.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="T:DBracket.Common.UI.WPF.Utils.Win32.PInvoke.WM">
+            <summary>
+            Window message values, WM_*
+            </summary>
+        </member>
+        <member name="F:DBracket.Common.UI.WPF.Utils.Win32.WindowUtils.SC.F_ISSECURE">
+            <summary>
+            SCF_ISSECURE
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.HWND.HWND_TOP">
+            <summary>Places the window at the top of the Z order.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Foundation.HWND.HWND_BOTTOM">
+            <summary>Places the window at the bottom of the Z order. If the <i>hWnd</i> parameter identifies a topmost window, the window loses its topmost status and is placed at the bottom of all other windows.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Foundation.HWND.HWND_TOPMOST">
+            <summary>Places the window above all non-topmost windows. The window maintains its topmost position even when it is deactivated.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Foundation.HWND.HWND_NOTOPMOST">
+            <summary>Places the window above all non-topmost windows (that is, behind all topmost windows). This flag has no effect if the window is already a non-topmost window.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-deferwindowpos">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="T:Windows.Win32.Foundation.PCWSTR">
+            <summary>
+            A pointer to a null-terminated, constant character string.
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.PCWSTR.Value">
+            <summary>
+            A pointer to the first character in the string. The content should be considered readonly, as it was typed as constant in the SDK.
+            </summary>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PCWSTR.Length">
+            <summary>
+            Gets the number of characters up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.ToString">
+            <summary>
+            Returns a <see langword="string"/> with a copy of this character array, up to the first null character (exclusive).
+            </summary>
+            <returns>A <see langword="string"/>, or <see langword="null"/> if <see cref="F:Windows.Win32.Foundation.PCWSTR.Value"/> is <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PCWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PWSTR.ToString">
+            <inheritdoc cref="M:Windows.Win32.Foundation.PCWSTR.ToString"/>
+        </member>
+        <member name="P:Windows.Win32.Foundation.PWSTR.Length">
+            <inheritdoc cref="P:Windows.Win32.Foundation.PCWSTR.Length"/>
+        </member>
+        <member name="M:Windows.Win32.Foundation.PWSTR.AsSpan">
+            <summary>
+            Returns a span of the characters in this string, up to the first null character (exclusive).
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.Foundation.RECT">
+            <summary>The RECT structure defines a rectangle by the coordinates of its upper-left and lower-right corners.</summary>
+            <remarks>The RECT structure is identical to the <a href="https://docs.microsoft.com/windows/desktop/api/windef/ns-windef-rectl">RECTL</a> structure.</remarks>
+        </member>
+        <member name="F:Windows.Win32.Foundation.RECT.left">
+            <summary>Specifies the <i>x</i>-coordinate of the upper-left corner of the rectangle.</summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.RECT.top">
+            <summary>Specifies the <i>y</i>-coordinate of the upper-left corner of the rectangle.</summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.RECT.right">
+            <summary>Specifies the <i>x</i>-coordinate of the lower-right corner of the rectangle.</summary>
+        </member>
+        <member name="F:Windows.Win32.Foundation.RECT.bottom">
+            <summary>Specifies the <i>y</i>-coordinate of the lower-right corner of the rectangle.</summary>
+        </member>
+        <member name="T:Windows.Win32.FreeLibrarySafeHandle">
+            <summary>
+            Represents a Win32 handle that can be closed with <see cref="M:Windows.Win32.PInvoke.FreeLibrary(Windows.Win32.Foundation.HMODULE)"/>.
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.Graphics.Gdi.MONITORINFO">
+            <summary>The MONITORINFO structure contains information about a display monitor.The GetMonitorInfo function stores information in a MONITORINFO structure or a MONITORINFOEX structure.The MONITORINFO structure is a subset of the MONITORINFOEX structure.</summary>
+            <remarks>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-monitorinfo">Learn more about this API from docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.Graphics.Gdi.MONITORINFO.cbSize">
+            <summary>
+            <para>The size of the structure, in bytes. Set this member to <c>sizeof ( MONITORINFO )</c> before calling the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-getmonitorinfoa">GetMonitorInfo</a> function. Doing so lets the function determine the type of structure you are passing to it.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-monitorinfo#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.Graphics.Gdi.MONITORINFO.rcMonitor">
+            <summary>A <a href="https://docs.microsoft.com/windows/desktop/api/windef/ns-windef-rect">RECT</a> structure that specifies the display monitor rectangle, expressed in virtual-screen coordinates. Note that if the monitor is not the primary display monitor, some of the rectangle's coordinates may be negative values.</summary>
+        </member>
+        <member name="F:Windows.Win32.Graphics.Gdi.MONITORINFO.rcWork">
+            <summary>A <a href="https://docs.microsoft.com/windows/desktop/api/windef/ns-windef-rect">RECT</a> structure that specifies the work area rectangle of the display monitor, expressed in virtual-screen coordinates. Note that if the monitor is not the primary display monitor, some of the rectangle's coordinates may be negative values.</summary>
+        </member>
+        <member name="F:Windows.Win32.Graphics.Gdi.MONITORINFO.dwFlags">
+            <summary>
+            <para>A set of flags that represent attributes of the display monitor. The following flag is defined. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-monitorinfo#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT">
+            <summary>Contains information about the placement of a window on the screen.</summary>
+            <remarks>
+            <para>If the window is a top-level window that does not have the <b>WS_EX_TOOLWINDOW</b> window style, then the coordinates represented by the following members are in workspace coordinates: <b>ptMinPosition</b>, <b>ptMaxPosition</b>, and <b>rcNormalPosition</b>. Otherwise, these members are in screen coordinates. Workspace coordinates differ from screen coordinates in that they take the locations and sizes of application toolbars (including the taskbar) into account. Workspace coordinate (0,0) is the upper-left corner of the workspace area, the area of the screen not being used by application toolbars. The coordinates used in a <b>WINDOWPLACEMENT</b> structure should be used only by the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-getwindowplacement">GetWindowPlacement</a> and <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setwindowplacement">SetWindowPlacement</a> functions. Passing workspace coordinates to functions which expect screen coordinates (such as <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setwindowpos">SetWindowPos</a>) will result in the window appearing in the wrong location. For example, if the taskbar is at the top of the screen, saving window coordinates using <b>GetWindowPlacement</b> and restoring them using <b>SetWindowPos</b> causes the window to appear to "creep" up the screen.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowplacement#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="F:Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT.length">
+            <summary>
+            <para>Type: <b>UINT</b> The length of the structure, in bytes. Before calling the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-getwindowplacement">GetWindowPlacement</a> or <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setwindowplacement">SetWindowPlacement</a> functions, set this member to <c>sizeof(WINDOWPLACEMENT)</c>.</para>
+            <para><a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-getwindowplacement">GetWindowPlacement</a> and <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setwindowplacement">SetWindowPlacement</a> fail if this member is not set correctly.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowplacement#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT.flags">
+            <summary>Type: <b>UINT</b></summary>
+        </member>
+        <member name="F:Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT.ptMinPosition">
+            <summary>
+            <para>Type: <b><a href="https://docs.microsoft.com/windows/win32/api/windef/ns-windef-point">POINT</a></b> The coordinates of the window's upper-left corner when the window is minimized.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowplacement#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT.ptMaxPosition">
+            <summary>
+            <para>Type: <b><a href="https://docs.microsoft.com/windows/win32/api/windef/ns-windef-point">POINT</a></b> The coordinates of the window's upper-left corner when the window is maximized.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowplacement#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="F:Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT.rcNormalPosition">
+            <summary>
+            <para>Type: <b><a href="https://docs.microsoft.com/windows/desktop/api/windef/ns-windef-rect">RECT</a></b> The window's coordinates when the window is in the restored position.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-windowplacement#members">Read more on docs.microsoft.com</see>.</para>
+            </summary>
+        </member>
+        <member name="T:Windows.Win32.PInvoke">
+            <content>
+            Contains extern methods from "KERNEL32.dll".
+            </content>
+            <content>
+            Contains extern methods from "USER32.dll".
+            </content>
+        </member>
+        <member name="F:Windows.Win32.PInvoke.WM_HOTKEY">
+            <summary>Posted when the user presses a hot key registered by the RegisterHotKey function. The message is placed at the top of the message queue associated with the thread that registered the hot key.</summary>
+            <remarks>**WM\_HOTKEY** is unrelated to the [**WM\_GETHOTKEY**](wm-gethotkey.md) and [**WM\_SETHOTKEY**](wm-sethotkey.md) hot keys. The **WM\_HOTKEY** message is sent for generic hot keys while the **WM\_SETHOTKEY** and **WM\_GETHOTKEY** messages relate to window activation hot keys.</remarks>
+        </member>
+        <member name="F:Windows.Win32.PInvoke.WM_NCLBUTTONDOWN">
+            <summary>Posted when the user presses the left mouse button while the cursor is within the nonclient area of a window. This message is posted to the window that contains the cursor. If a window has captured the mouse, this message is not posted.</summary>
+            <returns>If an application processes this message, it should return zero.</returns>
+            <remarks>
+            <para>The [**DefWindowProc**](/windows/desktop/api/winuser/nf-winuser-defwindowproca) function tests the specified point to find the location of the cursor and performs the appropriate action. If appropriate, **DefWindowProc** sends the [**WM\_SYSCOMMAND**](/windows/desktop/menurc/wm-syscommand) message to the window. You can also use the [**GET\_X\_LPARAM**](/windows/desktop/api/windowsx/nf-windowsx-get_x_lparam) and [**GET\_Y\_LPARAM**](/windows/desktop/api/windowsx/nf-windowsx-get_y_lparam) macros to extract the values of the x- and y- coordinates from *lParam*.</para>
+            <para></para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/inputdev/wm-nclbuttondown#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.CloseHandle(Windows.Win32.Foundation.HANDLE)">
+            <summary>Closes an open object handle.</summary>
+            <param name="hObject">A valid handle to an open object.</param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>. If the application is running under a debugger,  the function will throw an exception if it receives either a  handle value that is not valid  or a pseudo-handle value. This can happen if you close a handle twice, or if you  call <b>CloseHandle</b> on a handle returned by the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findfirstfilea">FindFirstFile</a> function instead of calling the <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-findclose">FindClose</a> function.</para>
+            </returns>
+            <remarks>
+            <para>The <b>CloseHandle</b> function closes handles to the following objects: </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/handleapi/nf-handleapi-closehandle#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.FreeLibrary(Windows.Win32.Foundation.HMODULE)">
+            <summary>Frees the loaded dynamic-link library (DLL) module and, if necessary, decrements its reference count.</summary>
+            <param name="hLibModule">
+            <para>A handle to the loaded library module. The <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibrarya">LoadLibrary</a>, <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibraryexa">LoadLibraryEx</a>, <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-getmodulehandlea">GetModuleHandle</a>, or <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-getmodulehandleexa">GetModuleHandleEx</a> function returns this handle.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-freelibrary#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function.</para>
+            </returns>
+            <remarks>
+            <para>The system maintains a per-process reference count for each loaded module. A  module that was loaded at process initialization due to load-time dynamic linking has a reference count of one. The reference count for a module is incremented each time the  module is loaded by a call to <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibrarya">LoadLibrary</a>. The reference count is also incremented by a call to <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibraryexa">LoadLibraryEx</a> unless the  module  is being loaded for the first time and is being loaded as   a data or image file. The reference count is decremented each time the <b>FreeLibrary</b> or <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-freelibraryandexitthread">FreeLibraryAndExitThread</a> function is called for the module. When a  module's reference count reaches zero or the process terminates, the system unloads the module from the address space of the  process. Before unloading a library module, the system enables the module to detach from the process by calling the module's <a href="https://docs.microsoft.com/windows/desktop/Dlls/dllmain">DllMain</a> function, if it has one, with the DLL_PROCESS_DETACH value. Doing so gives the library module an opportunity to clean up resources allocated on behalf of the current process. After the entry-point function returns, the library module is removed from the address space of the current process. It is not safe to call <b>FreeLibrary</b> from <a href="https://docs.microsoft.com/windows/desktop/Dlls/dllmain">DllMain</a>. For more information, see the Remarks section in <a href="https://docs.microsoft.com/windows/desktop/Dlls/dllmain">DllMain</a>. Calling <b>FreeLibrary</b> does not affect other processes that are using the same module. Use caution when calling <b>FreeLibrary</b> with a handle returned by <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-getmodulehandlea">GetModuleHandle</a>. The <b>GetModuleHandle</b> function does not increment a module's reference count, so passing this handle to <b>FreeLibrary</b> can cause a module to be unloaded prematurely. A thread that must unload the DLL in which it is executing and then terminate itself should call <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-freelibraryandexitthread">FreeLibraryAndExitThread</a> instead of calling <b>FreeLibrary</b> and <b>ExitThread</b> separately. Otherwise, a race condition can occur. For details, see the Remarks section of <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-freelibraryandexitthread">FreeLibraryAndExitThread</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-freelibrary#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.LoadLibrary(System.String)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.LoadLibrary(Windows.Win32.Foundation.PCWSTR)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.LoadLibrary(Windows.Win32.Foundation.PCWSTR)">
+            <summary>Loads the specified module into the address space of the calling process. (LoadLibraryW)</summary>
+            <param name="lpLibFileName">
+            <para>The name of the module. This can be either a library module (a .dll file) or an executable module (an .exe file). If the specified module is an executable module, static imports are not loaded; instead, the module is loaded as if by <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadlibraryexw">LoadLibraryEx</a> with the `DONT_RESOLVE_DLL_REFERENCES` flag. The name specified is the file name of the module and is not related to the name stored in the library module itself, as specified by the <b>LIBRARY</b> keyword in the module-definition (.def) file. If the string specifies a full path, the function searches only that path for the module. If the string specifies a relative path or a module name without a path, the function uses a standard search strategy to find the module; for more information, see the Remarks. If the function cannot find the  module, the function fails. When specifying a path, be sure to use backslashes (\\), not forward slashes (/). For more information about paths, see <a href="https://docs.microsoft.com/windows/desktop/FileIO/naming-a-file">Naming a File or Directory</a>. If the string specifies a module name without a path and the file name extension is omitted, the function appends the default library extension ".DLL" to the module name. To prevent the function from appending ".DLL" to the module name, include a trailing point character (.) in the module name string.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryw#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, the return value is a handle to the module. If the function fails, the return value is NULL. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>To enable or disable error messages displayed by the loader during DLL loads, use the <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-seterrormode">SetErrorMode</a> function. <b>LoadLibrary</b> can be used to load a library module into the address space of the process and return a handle that can be used in <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-getprocaddress">GetProcAddress</a> to get the address of a DLL function. <b>LoadLibrary</b> can also be used to load other executable modules. For example, the function can specify an .exe file to get a handle that can be used in <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-findresourcea">FindResource</a> or <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-loadresource">LoadResource</a>. However, do not use <b>LoadLibrary</b> to run an .exe file. Instead, use the <a href="https://docs.microsoft.com/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createprocessa">CreateProcess</a> function. If the specified module is a DLL that is not already loaded for the calling process, the system calls the DLL's <a href="https://docs.microsoft.com/windows/desktop/Dlls/dllmain">DllMain</a> function with the <b>DLL_PROCESS_ATTACH</b> value. If <b>DllMain</b> returns <b>TRUE</b>, <b>LoadLibrary</b> returns a handle to the module. If <b>DllMain</b> returns <b>FALSE</b>, the system unloads the DLL from the process address space and <b>LoadLibrary</b> returns <b>NULL</b>. It is not safe to call <b>LoadLibrary</b> from <b>DllMain</b>. For more information, see the Remarks section in <b>DllMain</b>. Module handles are not global or inheritable. A call to <b>LoadLibrary</b> by one process does not produce a handle that another process can use — for example, in calling <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-getprocaddress">GetProcAddress</a>. The other process must make its own call to <b>LoadLibrary</b> for the module before calling <b>GetProcAddress</b>. If <i>lpFileName</i> does not include a path and there is more than one loaded module with the same base name and extension, the function returns a handle to the module that was loaded first. If no file name extension is specified in the <i>lpFileName</i> parameter, the default library extension .dll is appended. However, the file name string can include a trailing point character (.) to indicate that the module name has no extension. When no path is specified, the function searches for loaded modules whose base name matches the base name of the module to be loaded. If the name matches, the load succeeds. Otherwise, the function searches for the file. The first directory searched is the directory containing the image file used to create the calling process (for more information, see the <a href="https://docs.microsoft.com/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createprocessa">CreateProcess</a> function). Doing this allows private dynamic-link library (DLL) files associated with a process to be found without adding the process's installed directory to the PATH environment variable. If a relative path is specified, the entire relative path is appended to every token in the DLL search path list. To load a module from a relative path without searching any other path, use <a href="https://docs.microsoft.com/windows/desktop/api/fileapi/nf-fileapi-getfullpathnamea">GetFullPathName</a> to get a nonrelative path and call <b>LoadLibrary</b> with the nonrelative path. For more information on the DLL search order, see <a href="https://docs.microsoft.com/windows/desktop/Dlls/dynamic-link-library-search-order">Dynamic-Link Library Search Order</a>. The search path can be altered using the <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-setdlldirectorya">SetDllDirectory</a> function. This solution is recommended instead of using <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-setcurrentdirectory">SetCurrentDirectory</a> or hard-coding the full path to the DLL. If a path is specified and there is a redirection file for the application, the function searches for the module in the application's directory. If the module exists in the application's directory, <b>LoadLibrary</b> ignores the specified path and loads the module from the application's directory. If the module does not exist in the application's directory, <b>LoadLibrary</b> loads the module from the specified directory. For more information, see <a href="https://docs.microsoft.com/windows/desktop/Dlls/dynamic-link-library-redirection">Dynamic Link Library Redirection</a>. If you call <b>LoadLibrary</b> with the name of an assembly without a path specification and the assembly is listed in the system compatible manifest, the call is automatically redirected to the side-by-side assembly. The system maintains a per-process reference count on all loaded modules. Calling <b>LoadLibrary</b> increments the reference count. Calling the <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-freelibrary">FreeLibrary</a> or <a href="https://docs.microsoft.com/windows/desktop/api/libloaderapi/nf-libloaderapi-freelibraryandexitthread">FreeLibraryAndExitThread</a> function decrements the reference count. The system unloads a module when its reference count reaches zero or when the process terminates (regardless of the reference count). <b>Windows Server 2003 and Windows XP:  </b>The Visual C++ compiler supports a syntax that enables you to declare thread-local variables: <b>_declspec(thread)</b>. If you use this syntax in a DLL, you will not be able to load the DLL explicitly using <b>LoadLibrary</b> on versions of Windows prior to Windows Vista. If your DLL will be loaded explicitly, you must use the thread local storage functions instead of <b>_declspec(thread)</b>. For an example, see <a href="https://docs.microsoft.com/windows/desktop/Dlls/using-thread-local-storage-in-a-dynamic-link-library">Using Thread Local Storage in a Dynamic Link Library</a>. <h3><a id="Security_Remarks"></a><a id="security_remarks"></a><a id="SECURITY_REMARKS"></a>Security Remarks</h3> Do not use the <a href="https://docs.microsoft.com/windows/desktop/api/processenv/nf-processenv-searchpathw">SearchPath</a> function to retrieve a path to a DLL for a subsequent <b>LoadLibrary</b> call. The <b>SearchPath</b> function uses a different search order than <b>LoadLibrary</b> and it does not use safe process search mode unless this is explicitly enabled by calling <a href="https://docs.microsoft.com/windows/desktop/api/winbase/nf-winbase-setsearchpathmode">SetSearchPathMode</a> with <b>BASE_SEARCH_PATH_ENABLE_SAFE_SEARCHMODE</b>. Therefore, <b>SearchPath</b> is likely to first search the user’s current working directory for the specified DLL. If an attacker has copied a malicious version of a DLL into the current working directory, the path retrieved by <b>SearchPath</b> will point to the malicious DLL, which <b>LoadLibrary</b> will then load. Do not make assumptions about the operating system version based on a <b>LoadLibrary</b> call that searches for a DLL. If the application is running in an environment where the DLL is legitimately not present but a malicious version of the DLL is in the search path, the malicious version of the DLL may be loaded. Instead, use the recommended techniques described in <a href="https://docs.microsoft.com/windows/desktop/SysInfo/getting-the-system-version">Getting the System Version</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryw#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetKeyNameText(System.Int32,Windows.Win32.Foundation.PWSTR,System.Int32)">
+            <summary>Retrieves a string that represents the name of a key. (Unicode)</summary>
+            <param name="lParam">
+            <para>Type: <b>LONG</b> The second parameter of the keyboard message (such as <a href="https://docs.microsoft.com/windows/desktop/inputdev/wm-keydown">WM_KEYDOWN</a>) to be processed. The function interprets the following bit positions in the <i>lParam</i>. | Bits  | Meaning | |-------|---------| | 16-23 | The scan code. The value depends on the OEM. | | 24    | Indicates whether the key is an extended key, such as the right-hand ALT and CTRL keys that appear on an enhanced 101- or 102-key keyboard. The value is 1 if it is an extended key; otherwise, it is 0. | | 25    | "Do not care" bit. The application calling this function sets this bit to indicate that the function should not distinguish between left and right CTRL and SHIFT keys, for example. | For more detail, see [Keystroke Message Flags](/windows/win32/inputdev/about-keyboard-input#keystroke-message-flags).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeynametextw#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="lpString">
+            <para>Type: <b>LPTSTR</b> The buffer that will receive the key name.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeynametextw#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="cchSize">
+            <para>Type: <b>int</b> The maximum length, in characters, of the key name, including the terminating null character. (This parameter should be equal to the size of the buffer pointed to by the <i>lpString</i> parameter.)</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeynametextw#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>int</b> If the function succeeds, a null-terminated string is copied into the specified buffer, and the return value is the length of the string, in characters, not counting the terminating null character. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>The format of the key-name string depends on the current keyboard layout. The keyboard driver maintains a list of names in the form of character strings for keys with names longer than a single character. The key name is translated according to the layout of the currently installed keyboard, thus the function may give different results for different input locales. The name of a character key is the character itself. The names of dead keys are spelled out in full. > [!NOTE] > The winuser.h header defines GetKeyNameText as an alias which automatically selects the ANSI or Unicode version of this function based on the definition of the UNICODE preprocessor constant. Mixing usage of the encoding-neutral alias with code that not encoding-neutral can lead to mismatches that result in compilation or runtime errors. For more information, see [Conventions for Function Prototypes](/windows/win32/intl/conventions-for-function-prototypes).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getkeynametextw#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetMonitorInfo(Windows.Win32.Graphics.Gdi.HMONITOR,Windows.Win32.Graphics.Gdi.MONITORINFO@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.GetMonitorInfo(Windows.Win32.Graphics.Gdi.HMONITOR,Windows.Win32.Graphics.Gdi.MONITORINFO*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetMonitorInfo(Windows.Win32.Graphics.Gdi.HMONITOR,Windows.Win32.Graphics.Gdi.MONITORINFO*)">
+            <summary>The GetMonitorInfo function retrieves information about a display monitor. (Unicode)</summary>
+            <param name="hMonitor">A handle to the display monitor of interest.</param>
+            <param name="lpmi">
+            <para>A pointer to a <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-monitorinfo">MONITORINFO</a> or <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-monitorinfoexa">MONITORINFOEX</a> structure that receives information about the specified display monitor. You must set the <b>cbSize</b> member of the structure to sizeof(MONITORINFO) or sizeof(MONITORINFOEX) before calling the <b>GetMonitorInfo</b> function. Doing so lets the function determine the type of structure you are passing to it. The <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-monitorinfoexa">MONITORINFOEX</a> structure is a superset of the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-monitorinfo">MONITORINFO</a> structure. It has one additional member: a string that contains a name for the display monitor. Most applications have no use for a display monitor name, and so can save some bytes by using a <b>MONITORINFO</b> structure.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getmonitorinfow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero.</para>
+            </returns>
+            <remarks>
+            <para>> [!NOTE] > The winuser.h header defines GetMonitorInfo as an alias which automatically selects the ANSI or Unicode version of this function based on the definition of the UNICODE preprocessor constant. Mixing usage of the encoding-neutral alias with code that not encoding-neutral can lead to mismatches that result in compilation or runtime errors. For more information, see [Conventions for Function Prototypes](/windows/win32/intl/conventions-for-function-prototypes).</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getmonitorinfow#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetWindowPlacement(Windows.Win32.Foundation.HWND,Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.GetWindowPlacement(Windows.Win32.Foundation.HWND,Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetWindowPlacement(Windows.Win32.Foundation.HWND,Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT*)">
+            <summary>Retrieves the show state and the restored, minimized, and maximized positions of the specified window.</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowplacement#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="lpwndpl">
+            <para>Type: <b><a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a>*</b> A pointer to the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> structure that receives the show state and position information. Before calling <b>GetWindowPlacement</b>, set the <b>length</b> member to <c>sizeof(WINDOWPLACEMENT)</c>. <b>GetWindowPlacement</b> fails if <i>lpwndpl</i>-&gt; <i>length</i> is not set correctly.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowplacement#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>The <b>flags</b> member of <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> retrieved by this function is always zero. If the window identified by the <i>hWnd</i> parameter is maximized, the <b>showCmd</b> member is SW_SHOWMAXIMIZED. If the window is minimized, <b>showCmd</b> is SW_SHOWMINIMIZED. Otherwise, it is SW_SHOWNORMAL. The <b>length</b> member of <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> must be set to sizeof(<b>WINDOWPLACEMENT</b>). If this member is not set correctly, the function returns <b>FALSE</b>. For additional remarks on the proper use of window placement coordinates, see <b>WINDOWPLACEMENT</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowplacement#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetWindowRect(Windows.Win32.Foundation.HWND,Windows.Win32.Foundation.RECT@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.GetWindowRect(Windows.Win32.Foundation.HWND,Windows.Win32.Foundation.RECT*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.GetWindowRect(Windows.Win32.Foundation.HWND,Windows.Win32.Foundation.RECT*)">
+            <summary>Retrieves the dimensions of the bounding rectangle of the specified window. The dimensions are given in screen coordinates that are relative to the upper-left corner of the screen.</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowrect#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="lpRect">
+            <para>Type: <b>LPRECT</b> A pointer to a  <a href="https://docs.microsoft.com/windows/desktop/api/windef/ns-windef-rect">RECT</a> structure that receives the screen coordinates of the upper-left and lower-right corners of the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowrect#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>In conformance with conventions for the <a href="https://docs.microsoft.com/windows/desktop/api/windef/ns-windef-rect">RECT</a> structure, the bottom-right coordinates of the returned rectangle are exclusive. In other words, the pixel at (<b>right</b>, <b>bottom</b>) lies immediately outside the rectangle. GetWindowRect is virtualized for DPI. In Windows Vista and later, the Window Rect now includes the area occupied by the drop shadow. Calling GetWindowRect will have different behavior depending on whether the window has ever been shown or not.  If the window has not been shown before, GetWindowRect will not include the area of the drop shadow. To get the window bounds excluding the drop shadow, use <a href="https://docs.microsoft.com/windows/win32/api/dwmapi/nf-dwmapi-dwmgetwindowattribute">DwmGetWindowAttribute</a>, specifying <b>DWMWA_EXTENDED_FRAME_BOUNDS</b>.  Note that unlike the Window Rect, the DWM Extended Frame Bounds are not adjusted for DPI.  Getting the extended frame bounds can only be done after the window has been shown at least once.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-getwindowrect#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.LoadString(System.Runtime.InteropServices.SafeHandle,System.UInt32,Windows.Win32.Foundation.PWSTR,System.Int32)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.LoadString(Windows.Win32.Foundation.HINSTANCE,System.UInt32,Windows.Win32.Foundation.PWSTR,System.Int32)"/>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Windows.Win32.PInvoke.LoadString(Windows.Win32.Foundation.HINSTANCE,System.UInt32,Windows.Win32.Foundation.PWSTR,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:Windows.Win32.PInvoke.MapVirtualKey(System.UInt32,Windows.Win32.UI.Input.KeyboardAndMouse.MAP_VIRTUAL_KEY_TYPE)" -->
+        <member name="M:Windows.Win32.PInvoke.MonitorFromWindow(Windows.Win32.Foundation.HWND,Windows.Win32.Graphics.Gdi.MONITOR_FROM_FLAGS)">
+            <summary>The MonitorFromWindow function retrieves a handle to the display monitor that has the largest area of intersection with the bounding rectangle of a specified window.</summary>
+            <param name="hwnd">A handle to the window of interest.</param>
+            <param name="dwFlags">Determines the function's return value if the window does not intersect any display monitor.</param>
+            <returns>
+            <para>If the window intersects one or more display monitor rectangles, the return value is an <b>HMONITOR</b> handle to the display monitor that has the largest area of intersection with the window. If the window does not intersect a display monitor, the return value depends on the value of <i>dwFlags</i>.</para>
+            </returns>
+            <remarks>If the window is currently minimized, <b>MonitorFromWindow</b> uses the rectangle of the window before it was minimized.</remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.MoveWindow(Windows.Win32.Foundation.HWND,System.Int32,System.Int32,System.Int32,System.Int32,Windows.Win32.Foundation.BOOL)">
+            <summary>Changes the position and dimensions of the specified window.</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="X">
+            <para>Type: <b>int</b> The new position of the left side of the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="Y">
+            <para>Type: <b>int</b> The new position of the top of the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="nWidth">
+            <para>Type: <b>int</b> The new width of the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="nHeight">
+            <para>Type: <b>int</b> The new height of the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="bRepaint">
+            <para>Type: <b>BOOL</b> Indicates whether the window is to be repainted. If this parameter is <b>TRUE</b>, the window receives a  message. If the parameter is <b>FALSE</b>, no repainting of any kind occurs. This applies to the client area, the nonclient area (including the title bar and scroll bars), and any part of the parent window uncovered as a result of moving a child window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>If the <i>bRepaint</i> parameter is <b>TRUE</b>, the system sends the <a href="https://docs.microsoft.com/windows/desktop/gdi/wm-paint">WM_PAINT</a> message to the window procedure immediately after moving the window (that is, the <b>MoveWindow</b> function calls the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-updatewindow">UpdateWindow</a> function). If <i>bRepaint</i> is <b>FALSE</b>, the application must explicitly invalidate or redraw any parts of the window and parent window that need redrawing. <b>MoveWindow</b> sends the <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-windowposchanging">WM_WINDOWPOSCHANGING</a>, <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-windowposchanged">WM_WINDOWPOSCHANGED</a>, <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-move">WM_MOVE</a>, <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-size">WM_SIZE</a>, and <a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-nccalcsize">WM_NCCALCSIZE</a> messages to the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-movewindow#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.ReleaseCapture">
+            <summary>Releases the mouse capture from a window in the current thread and restores normal mouse input processing.</summary>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>An application calls this function after calling the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setcapture">SetCapture</a> function.</remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SendMessage(Windows.Win32.Foundation.HWND,System.UInt32,Windows.Win32.Foundation.WPARAM,Windows.Win32.Foundation.LPARAM)">
+            <summary>Sends the specified message to a window or windows. The SendMessage function calls the window procedure for the specified window and does not return until the window procedure has processed the message. (SendMessageW)</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window whose window procedure will receive the message. If this parameter is <b>HWND_BROADCAST</b> ((HWND)0xffff), the message is sent to all top-level windows in the system, including disabled or invisible unowned windows, overlapped windows, and pop-up windows; but the message is not sent to child windows. Message sending is subject to UIPI. The thread of a process can send messages only to message queues of threads in processes of lesser or equal integrity level.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="Msg">
+            <para>Type: <b>UINT</b> The message to be sent. For lists of the system-provided messages, see <a href="https://docs.microsoft.com/windows/desktop/winmsg/about-messages-and-message-queues">System-Defined Messages</a>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="wParam">
+            <para>Type: <b>WPARAM</b> Additional message-specific information.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="lParam">
+            <para>Type: <b>LPARAM</b> Additional message-specific information.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>LRESULT</b> The return value specifies the result of the message processing; it depends on the message sent.</para>
+            </returns>
+            <remarks>
+            <para>When a message is blocked by UIPI the last error, retrieved with <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>, is set to 5 (access denied). Applications that need to communicate using <b>HWND_BROADCAST</b> should use the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-registerwindowmessagea">RegisterWindowMessage</a> function to obtain a unique message for inter-application communication. The system only does marshalling for system messages (those in the range 0 to (<a href="https://docs.microsoft.com/windows/desktop/winmsg/wm-user">WM_USER</a>-1)). To send other messages (those &gt;= <b>WM_USER</b>) to another process, you must do custom marshalling. If the specified window was created by the calling thread, the window procedure is called immediately as a subroutine. If the specified window was created by a different thread, the system switches to that thread and calls the appropriate window procedure. Messages sent between threads are processed only when the receiving thread executes message retrieval code. The sending thread is blocked until the receiving thread processes the message. However, the sending thread will process incoming nonqueued messages while waiting for its message to be processed. To prevent this, use <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-sendmessagetimeouta">SendMessageTimeout</a> with SMTO_BLOCK set. For more information on nonqueued messages, see <a href="https://docs.microsoft.com/windows/desktop/winmsg/about-messages-and-message-queues">Nonqueued Messages</a>. An accessibility application can use <b>SendMessage</b> to send <a href="https://docs.microsoft.com/windows/desktop/inputdev/wm-appcommand">WM_APPCOMMAND</a> messages  to the shell to launch applications. This  functionality is not guaranteed to work for other types of applications.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-sendmessagew#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SetWindowPlacement(Windows.Win32.Foundation.HWND,Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT@)">
+            <inheritdoc cref="M:Windows.Win32.PInvoke.SetWindowPlacement(Windows.Win32.Foundation.HWND,Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT*)"/>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SetWindowPlacement(Windows.Win32.Foundation.HWND,Windows.Win32.UI.WindowsAndMessaging.WINDOWPLACEMENT*)">
+            <summary>Sets the show state and the restored, minimized, and maximized positions of the specified window.</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowplacement#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="lpwndpl">
+            <para>Type: <b>const <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a>*</b> A pointer to a <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> structure that specifies the new show state and window positions. Before calling <b>SetWindowPlacement</b>, set the <b>length</b> member of the <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> structure to sizeof(<b>WINDOWPLACEMENT</b>). <b>SetWindowPlacement</b> fails if the <b>length</b> member is not set correctly.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowplacement#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>If the information specified in <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> would result in a window that is completely off the screen, the system will automatically adjust the coordinates so that the window is visible, taking into account changes in screen resolution and multiple monitor configuration. The <b>length</b> member of <a href="https://docs.microsoft.com/windows/desktop/api/winuser/ns-winuser-windowplacement">WINDOWPLACEMENT</a> must be set to <c>sizeof(WINDOWPLACEMENT)</c>. If this member is not set correctly, the function returns <b>FALSE</b>. For additional remarks on the proper use of window placement coordinates, see <b>WINDOWPLACEMENT</b>.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowplacement#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+        <member name="M:Windows.Win32.PInvoke.SetWindowPos(Windows.Win32.Foundation.HWND,Windows.Win32.Foundation.HWND,System.Int32,System.Int32,System.Int32,System.Int32,Windows.Win32.UI.WindowsAndMessaging.SET_WINDOW_POS_FLAGS)">
+            <summary>Changes the size, position, and Z order of a child, pop-up, or top-level window. These windows are ordered according to their appearance on the screen. The topmost window receives the highest rank and is the first window in the Z order.</summary>
+            <param name="hWnd">
+            <para>Type: <b>HWND</b> A handle to the window.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="hWndInsertAfter">Type: <b>HWND</b></param>
+            <param name="X">
+            <para>Type: <b>int</b> The new position of the left side of the window, in client coordinates.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="Y">
+            <para>Type: <b>int</b> The new position of the top of the window, in client coordinates.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="cx">
+            <para>Type: <b>int</b> The new width of the window, in pixels.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="cy">
+            <para>Type: <b>int</b> The new height of the window, in pixels.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos#parameters">Read more on docs.microsoft.com</see>.</para>
+            </param>
+            <param name="uFlags">Type: <b>UINT</b></param>
+            <returns>
+            <para>Type: <b>BOOL</b> If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call <a href="https://docs.microsoft.com/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</para>
+            </returns>
+            <remarks>
+            <para>As part of the Vista re-architecture, all services were moved off the interactive desktop into Session 0. hwnd and window manager operations are only effective inside a session and cross-session attempts to manipulate the hwnd will fail. For more information, see <a href="https://docs.microsoft.com/previous-versions/aa480152(v=msdn.10)">The Windows Vista Developer Story: Application Compatibility Cookbook</a>. If you have changed certain window data using <a href="https://docs.microsoft.com/windows/desktop/api/winuser/nf-winuser-setwindowlonga">SetWindowLong</a>, you must call <b>SetWindowPos</b> for the changes to take effect. Use the following combination for <i>uFlags</i>: <c>SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED</c>. A window can be made a topmost window either by setting the <i>hWndInsertAfter</i> parameter to <b>HWND_TOPMOST</b> and ensuring that the <b>SWP_NOZORDER</b> flag is not set, or by setting a window's position in the Z order so that it is above any existing topmost windows. When a non-topmost window is made topmost, its owned windows are also made topmost. Its owners, however, are not changed. If neither the <b>SWP_NOACTIVATE</b> nor <b>SWP_NOZORDER</b> flag is specified (that is, when the application requests that a window be simultaneously activated and its position in the Z order changed), the value specified in <i>hWndInsertAfter</i> is used only in the following circumstances. </para>
+            <para>This doc was truncated.</para>
+            <para><see href="https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos#">Read more on docs.microsoft.com</see>.</para>
+            </remarks>
+        </member>
+    </members>
+</doc>
